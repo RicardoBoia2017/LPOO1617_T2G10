@@ -134,7 +134,11 @@ public class Game {
 		if(board[y][x+1]=='G'||board[y-1][x]=='G'||board[y][x-1]=='G'||board[y+1][x]=='G' || board[y][x]==board[gy][gx])
 			System.out.print("Game Over");
 		p.close();
+		OgreLevel();
 	}
 	
-
+	public static void OgreLevel()
+	{
+		
+	}
 }
