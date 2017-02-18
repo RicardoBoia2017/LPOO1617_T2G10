@@ -2,7 +2,7 @@ import java.util.Scanner;
 public class Game {
 
 	public static void main(String[] args) {
-		Scanner p = new Scanner(System.in);
+		/*Scanner p = new Scanner(System.in);
 		int y=1, x=1, gx=8, gy=1;
 		char board[][]=new char[10][10];
 		for(int i=0;i<board.length;i++)
@@ -133,12 +133,46 @@ public class Game {
 			System.out.print("Victory");
 		if(board[y][x+1]=='G'||board[y-1][x]=='G'||board[y][x-1]=='G'||board[y+1][x]=='G' || board[y][x]==board[gy][gx])
 			System.out.print("Game Over");
-		p.close();
+		p.close();*/
 		OgreLevel();
 	}
 	
 	public static void OgreLevel()
 	{
-		
+		int y=8, x=1;
+		char board[][]=new char[10][10];
+		for(int i=0;i<board.length;i++)
+		{
+			for(int j=0;j<board.length;j++) 
+				board[i][j] = ' ';
+			if (i==0||i==9)
+			{
+				for(int j=0;j<board[i].length;j++)
+				{
+				board[i][j]='X';
+				}
+			}
+			else 
+			{
+				board[i][1]='X';
+				board[i][9]='X';
+			}
+		}
+		board[1][0]='I';
+		board[1][4]='O';
+		board[1][8]='k';
+		board[8][1]='H';
+		do
+		{
+			for(int i=0;i<board.length;i++)
+			{
+				for(int j=0;j<board[i].length;j++)
+				{
+					System.out.print(board[i][j]);
+					
+				}
+				System.out.println();
+			}
+		}while(false);
 	}
 }
