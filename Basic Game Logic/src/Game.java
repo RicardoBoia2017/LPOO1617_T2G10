@@ -250,7 +250,7 @@ public class Game {
 						board[oy][ox]='$';
 					}
 					break;
-				case 1:// s
+				case 1://s
 					if(board[oy+1][ox]==' ')
 					{
 						board[oy][ox]=' ';
