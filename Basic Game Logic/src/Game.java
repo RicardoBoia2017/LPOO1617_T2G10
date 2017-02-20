@@ -139,7 +139,8 @@ public class Game {
 	
 	public static void OgreLevel()
 	{
-		int y=8, x=1;
+		Scanner p = new Scanner(System.in);
+		int y=8, x=1,ox=4,oy=1;
 		char board[][]=new char[10][10];
 		for(int i=0;i<board.length;i++)
 		{
@@ -173,6 +174,125 @@ public class Game {
 				}
 				System.out.println();
 			}
-		}while(false);
+			char pos = p.next().charAt(0);
+			switch(pos)
+			{
+			case 'w':
+				if(board[y-1][x]==' ')
+				{
+					board[y][x]=' ';
+					y=y-1;
+					board[y][x]='H';
+				}
+				else if(board[y][x-1]=='k')
+				{
+					board[y][x]=' ';
+					x=x-1;
+					board[y][x]='K';
+				}
+				break;
+			case 's':
+				if(board[y+1][x]==' ')
+				{
+					board[y][x]=' ';
+					y=y+1;
+					board[y][x]='H';
+				}
+				break;
+			case 'd':
+				if(board[y][x+1] == ' ')
+				{
+					board[y][x]=' ';
+					x = x + 1;
+					board[y][x]='H';
+				}
+				else if(board[y][x-1]=='k')
+				{
+					board[y][x]=' ';
+					x=x-1;
+					board[y][x]='K';
+				}
+				break;
+			case 'a':
+				if(board[y][x-1]==' ')
+				{
+					board[y][x]=' ';
+					x=x-1;
+					board[y][x]='H';
+				}
+				else if(board[y][x-1]=='I'&&board[y][x]=='K')
+				{
+					board[y][x-1]='S';
+				}
+				else if(board[y][x-1]=='S')
+				{
+					board[y][x]=' ';
+					x=x-1;
+					board[y][x]='H';
+				}
+			do
+			{	
+				Random ran = new Random();
+				int Ogrepos = ran.nextInt(4);
+				int tmpox=ox,tmpoy=oy//posição do ogre
+				switch(Ogrepos)
+				case 0://w
+					if(board[oy-1][ox]==' ')
+					{
+						board[oy][ox]=' ';
+						oy=oy-1;
+						board[oy][ox]='O';
+					}
+					else if(board[oy][ox-1]=='k')
+					{
+						board[oy][ox]=' ';
+						ox=ox-1;
+						board[oy][ox]='$';
+					}
+					break;
+				case 1://s
+					if(board[oy+1][ox]==' ')
+					{
+						board[oy][ox]=' ';
+						oy=oy+1;
+						board[oy][ox]='O';
+					}if(oy=2&&ox=8)
+					{
+						board[oy-1][ox]='k';
+					}
+					break;
+				case 2://d
+					if(board[oy][ox+1] == ' ')
+					{
+						board[oy][ox]=' ';
+						ox = ox + 1;
+						board[oy][ox]='O';
+					}
+					else if(board[oy][ox-1]=='k')
+					{
+						board[oy][ox]= ' ';
+						ox = ox-1;
+						board[oy][ox] = '$';
+					}
+					break;
+				case 3://a
+					if(board[oy][ox-1]==' ')
+					{
+						board[oy][ox]=' ';
+						ox=ox-1;
+						board[oy][ox]='O';
+					}
+					if(oy=1&&ox=7)
+					{
+						board[oy][ox+1]='k';
+					}
+					break;
+			}
+			while(oy==tmpoy&&ox==tmpox)//verifica se o ogre fica no mesmo sitio
+		}while(board[1][0]!='H'&&board[y][x+1]!='O'&&board[y-1][x]!='O'&&board[y][x-1]!='O'&&board[y+1][x]!='O' && board[y][x]!=board[oy][ox]));
+		if(board[1][0]=='H')
+			System.out.print("Victory");
+		if(board[y][x+1]=='O'||board[y-1][x]=='O'||board[y][x-1]=='O'||board[y+1][x]=='O' || board[y][x]==board[oy][ox])
+			System.out.print("Game Over");
 	}
 }
