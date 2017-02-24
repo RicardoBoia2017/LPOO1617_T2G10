@@ -22,4 +22,7 @@ public class Guard extends MobileEntity {
 			x = x + 1;
 		}
 	}
+	public char getSymbol() {
+		return symbol;
+	}
 }

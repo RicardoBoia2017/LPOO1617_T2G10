@@ -6,10 +6,10 @@ public class MobileEntity
 		 x = xinit;
 		 y = yinit;
 	}
-	public int GetPositionX(){
-		return this.x;
+	public int getPositionX(){
+		return x;
 	}
-	public int GetPositionY(){
-		return this.y;
+	public int getPositionY(){
+		return y;
 	}
 }
